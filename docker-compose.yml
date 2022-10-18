@@ -1,0 +1,35 @@
+version: '3.6'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: root-postgres
+      POSTGRES_PASSWORD: root-postgres
+
+  web: &web
+    build: ./docker/web
+    tty: true
+    platform: linux/amd64
+    stdin_open: true
+    command: sh /docker-entrypoint.sh
+    environment:
+      RAILS_ENV: development
+      YOUTUBE_API_KEY:
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/workspace
+      - bundle_cache:/workspace/vendor/bundle
+    depends_on:
+      - db
+
+  webpack:
+    <<: *web
+    command: /bin/bash -lc "cd /workspace; yarn && yarn start"
+    ports: []
+    depends_on: []
+
+volumes:
+  bundle_cache:
+

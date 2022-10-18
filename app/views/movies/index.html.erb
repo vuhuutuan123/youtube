@@ -1,0 +1,9 @@
+<div id="movies" class="row">
+  <div class="col-10 offset-1 col-md-8 offset-md-2" id="movies-display">
+    <% if @movies.size.positive? %>
+      <%= render @movies %>
+    <% else %>
+      <%= render 'layouts/no_data' %>
+    <% end %>
+  </div>
+</div>

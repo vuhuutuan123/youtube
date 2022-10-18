@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <title>Youtube Videos Sharing</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body class="c-app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<div class="c-wrapper">
+  <%= render "layouts/header" %>
+  <div class="c-body">
+    <main class="c-main">
+      <div class="container-fluid">
+        <div id="js__flash-area">
+          <%= render "layouts/messages" %>
+        </div>
+        <%= yield %>
+      </div>
+    </main>
+  </div>
+</div>
+</body>
+</html>

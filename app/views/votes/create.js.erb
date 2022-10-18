@@ -1,0 +1,2 @@
+$(".js--vote-state-<%= @movie.id %>")
+  .html("<%= j render('movies/vote_state', movie: @movie) %>")

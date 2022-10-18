@@ -1,0 +1,16 @@
+<% vote_state = current_user.state_voting_movie(movie) %>
+<% if vote_state != Vote.states['voted_down'] %>
+  <%= link_to movie_votes_path(movie, vote_state: vote_state ? :voted_down : :voted_up), remote: true, method: :post do %>
+    <%= button_tag class: 'button-vote text-primary' do %>
+      <i class="<%= vote_state ? 'fas' : 'far' %> fa-thumbs-up fa-2x"></i>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if vote_state != Vote.states['voted_up'] %>
+  <%= link_to movie_votes_path(movie, vote_state: vote_state ? :voted_up : :voted_down), remote: true, method: :post do %>
+    <%= button_tag class: 'button-vote text-primary' do %>
+      <i class="<%= vote_state ? 'fas' : 'far' %> fa-thumbs-down fa-2x"></i>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,17 @@
+#movies {
+  .movie-information {
+    height: 150px;
+    overflow: auto;
+  }
+
+  .button-vote {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+#new-movie {
+  fieldset {
+    border: solid 1px black
+  }
+}

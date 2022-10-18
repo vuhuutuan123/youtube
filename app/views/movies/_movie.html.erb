@@ -1,0 +1,26 @@
+<div class="row mt-5 movie-detail" data-movie-id= <%= movie.id%> >
+  <div class="col-4">
+    <iframe width="100%" height="200"
+            src="<%= movie.embed_url %>">
+    </iframe>
+  </div>
+  <div class="col-8">
+    <div class="d-flex">
+      <div class="w-100">
+        <h5><%= link_to movie.title, movie.youtube_full_url, class:"text-danger movie_title", target: '_blank' %></h5>
+        <div class="author mt-2">
+          <strong>Shared by:</strong> <%= movie.user.email %>
+        </div>
+      </div>
+      <% if current_user %>
+        <div class="vote float-right d-flex js--vote-state-<%= movie.id %>">
+          <%= render 'movies/vote_state', movie: movie %>
+        </div>
+      <% end %>
+    </div>
+    <div class="description mt-2">
+      <strong>Description:</strong>
+      <p class="break-line movie-information"><%= movie.description.html_safe %></p>
+    </div>
+  </div>
+</div>
